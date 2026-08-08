@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html land="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport">
+        content="width=device-width,initial-scale=1.0">
+        <title>ToolNest</title>
+
+        <link rel="stylesheet" href="style.css">
+
+        <link rel="icon" type="image/png" href="favicon.png">
+        </head>
+        <body>
+
+           <header>
+            <div class="logo">🛠 ToolNest</div>
+
+            <div id="home" class="tool active">
+                <h2>home</h2>
+                <p>Welcome to ToolNest</p>
+                </div>
+
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="contact.html">Contact</a>
+                </nav>
+                </header>
+
+                <h1>🛠 ToolNest</h1>
+                <p>All Online Tools in One Place</p>
+            </header>
+
+            <main>
+
+                <!-- Hero Section -->
+                 <section class="hero">
+                    <h1>🛠 Free Online Tools</h1>
+                    <p>Resize Image, Compress Files,
+                        ConvertPDF,QR Tools,Text to Speech
+                 और बहुत कुछ - बिल्कुल  मुफ्त</p>
+
+                 <input type="text"
+                 id="searchTools" placeholder="🔍 Search a tool...">
+                 </section>
+
+                 <!-- Tool Categories -->
+                  <section class="tool-grid">
+                    <div class="tool-card">
+                        <h3>🖼 Image Resize</h3>
+                        <p>Resize images instantly.</p>
+                        </div>
+
+
+                <div class="tool-card">
+                    <h3>🔑Password Generator</h3>
+
+                    <input type="text" id="password"
+                    readonly>
+
+                    <button onclick="generatePassword()">
+                        Generate Password
+                    </button>
+
+                    <button onclick="copyPassword()">
+                       📋 Copy Password
+                    </button>
+                    </div>
+
+                    <div class="tool-card">
+                        <h3>📱QR Code Generator</h3>
+
+                        <input
+                        type="text"
+                        id="qrText"
+                        placeholder="Enter text or URL">
+
+                        <button onclick="generateQR()">
+                            Generatar QR
+                        </button>
+
+                        <div id="qrCode"></div>
+                        </div>
+
+                        <!-- Text Case Converter -->
+                        <div class="tool-card">
+                            <h2>📝Text Case Converter</h2>
+                            
+                            <textarea id="textInput" rows="6"
+                             placeholder="Enter your text here..."></textarea>
+
+                            <button
+                            onclick="toUpperCaseText()">UPPERCASE</button>
+                            <button 
+                            onclick="toLowerCaseText()">lowercase</button>
+                            <button onclick="toTitleCase()">Title Case</button>
+                            <button onclick="clearText()">Clear</button>
+                            </div>
+
+                            <!-- word Counter-->
+                            <div class="tool-card">
+                                <h2>📊 Word Counter</h2>
+
+                                <textarea id="wordInput" rows="6"
+                                placeholder="Type or paste your text 
+                                here..."></textarea>
+
+                                <button onclick="countWords()">Count 
+                           Words</button>
+
+                                <p><strong>Words:</strong>  <span 
+                             id="wordCount">0</span></p>
+                                <p><strong>Characters:</strong> <span
+                             id="charCount">0</span></p>
+                                </div>
+
+                                <!--Password Strength Checker-->
+                                <div class="tool-card">
+                                    <h2>=🔐Password Strength checker</h2>
+
+                                    <input type="password"
+                                    id="strengthPassword" placeholder="Enter 
+                                    your password">
+
+                                    <button
+                                    onclick="checkPasswordStrength()">Check 
+                                    Strength</button>
+
+                                    <p id="strengthResult">Password 
+                                Strength: -</p>
+                                    </div>
+                                
+                         </main>
+
+                         <div class="tool-card">
+                            <h2>🖼Image Resizer</h2>
+
+                            <input type="file" id="imageInput" accept="image/*"><br><br>
+
+                            <input type="number" id="width" placeholder="width">
+
+                            <input type="number" id="height" placeholder="height"><br><br>
+
+                            <button onclick="resizeImage()">Resize Image</button>
+                          <br></br>
+
+                            <canvas id="canvas"></canvas>
+
+                            <br></br>
+
+                            <a id="downloadBtn"
+                                 download="resized-image.png">
+                                    Download Image
+                                    </a>
+                                    </div>
+
+                                    <!-- Image compressor -->
+                                     <div class="tool-card">
+                                        <h2>🗜 Image Compressor</h2>
+
+                                        <input type="file"
+                                        id="compressImageInput" accept="image/*">
+
+                                        <br><br>
+
+                                        <label>Compression Quality</label>
+                                        <input type="range" id="quality" min="10" max="100" value="70">
+                                        <span id="qualityValue">70%</span>
+
+                                        <br><br>
+
+                                        <button
+                                        onclick="compressImage()">Compress Image</button>
+
+                                        <br><br>
+
+                                        <canvas id="compressCanvas"></canvas>
+
+                                        <br><br>
+
+                                        <a id="downloadCompressedImage"
+                                        download="compressed-image.jpg">
+                                          Download Compressed Image
+                                        </a>
+
+                                        <!-- Image to PDF Converter -->
+                                         <div class="tool-card">
+                                            <h2>📄Image to PDF Converter</h2>
+
+                                            <input type="file" id="pdfImageInput" accept="image/*" multiple>
+
+                                            <br><br>
+
+                                            <button
+                                            onclick="convertToPDF()">Create PDF</button>
+
+                                            <dr><dr>
+
+                                                <a id="downloadPDF"
+                                                download="images.pdf"
+                                                style="display:none;">
+                                                        Download pdf
+                                                     </a>
+                                                    </div>
+
+                                                     <div class="tool-card">
+                                                         <h2>🔤Character Counter</h2>
+
+                                                         <textarea id="charInput"
+                                                         placeholder="Type or paste your text here..."></textarea>
+
+                                                         <br><br>
+
+                                                         <button 
+                                                         onclick="countCharacters()">Count Characters</button>
+
+                                                         <div class="result">
+                                                            <p>TotalCharacters: <span id="totalChars">0</span></p>
+                                                            <p>Characters (Without Spaces): <span id="charsNoSpace">0</span></p>
+                                                    <p>Words: <span id="charWords">0</span></p>
+                                                    <p>Lines: <span id="charLines">0</span></p>
+                                                    </div>
+                                                 </div>
+
+                                                    
+                                                    <!-- QR Code Scanner -->
+                                                     <div class="tool-card">
+                                                        <h2>📱 QR Code Scanner</h2>
+
+                                                        <input type="file" id="qrScannerInput"accept="image/*">
+
+                                                        <br><br>
+
+                                                        <button onclick="scanQRCode()">Scan QR Code</button>
+
+                                                        <br><br>
+
+                                                        <div class="result">
+                                                            <strong>Result:</strong>
+                                                            <p id="qrResult">No QR Code scanned.</p>
+                                                        </div>
+                                                        </div>
+                                                        <div id="qrscanner" class="tool">
+                                                            <h2>QR Code Scanner</h2>
+                                                            <input type="file" id="qrScannerInput" accept="image/*">
+                                                            <div id="qrResult"></div>
+                                                        </div>
+
+                                                        <!-- Text to Speech Tool-->
+                                                         <div class="tool-card">
+                                                             <h2>🔊 Text to speech</h2>
+                 
+                                                         <textarea id="ttsText"
+                                                         placeholder="Enter your text here..."></textarea>
+
+                                                         <label>🌍 Language</label>
+                                                         <select id="languageSelect"></select>
+
+                                                         <label>🎤 Voice</label>
+                                                         <select id="voiceSelect"></select>
+
+                                                         <label>⚡ Speed: <span
+                                                        id="speedValue">1</span></label>
+                                                        <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1">
+
+                                                        <label>🎵pitch: <span id="pitchValue">1</span></label>
+                                                        <input type="range" id="pitch" min="0" max="2" step="0.1" value="1">
+
+                                                        <label>🔊 Volume: <span id="volumeValue">1</span></label>
+                                                        <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+
+                                                        <div class="button-group">
+                                                            <button onclick="speakText()">▶Speak</button>
+                                                            <button onclick="pauseSpeech()">⏸Pause</button>
+                                                            <button onclick="resumeSpeech()">▶Resume</button>
+                                                            <button onclick="stopSpeech()">⏹stop</button>
+                                                            <button onclick="clearText()">🆑Clear</button>
+                                                            </div>
+                                                        <div class="tool-card">
+                                                            <h2>Base64 Encoder / Decoder</h2>
+
+                                                            <textarea id="base64Input"
+                                                            placeholder="Enter text here..."></textarea>
+
+                                                            <br><br>
+
+                                                            <button
+                                                            onclick="encodeBase64()">Encode</button>
+                                                            <button
+                                                            onclick="decodeBase64()">Decode</button>
+                                                            <button onclick="copyBase64()">Copy</button>
+                                                            <button onclick="clearBase64()">Clear</button>
+
+                                                            <br><br>
+
+                                                            <textarea id="base64Output"
+                                                            placeholder="Result..."readonly></textarea>
+                                                            </div>
+
+                                                            <div class="tool-card">
+                                                                <h2>🔗 URL Encoder /decoder</h2>
+
+                                                                <textarea id="urlInput"
+                                                                placeholder="Enter URL or text..."></textarea>
+
+                                                                <br><br>
+
+                                                                <button onclick="encodeURL()">Encode</button>
+                                                                <button onclick="decodeURL()">Decode</button>
+                                                                <button onclick="copyURL()">Copy</button>
+                                                                <button onclick="clearURL()">Clear</button>
+
+                                                                <br><br>
+
+                                                                <textarea id="urlOutput"
+                                                                placeholder="Result..." readonly></textarea>
+                                                                </div>
+
+                                                                <div class="tool-card">
+                                                                    <h2>🗂 JSON Formatter</h2>
+
+                                                                    <textarea id="jsonInput"
+                                                                    placeholder="Paste JSON here..."></textarea>
+
+                                                                    <br><br>
+
+                                                                    <button onclick="formatJSON()">Format</button>
+                                                                    <button onclick="minifyJSON()">Minify</button>
+                                                                    <button
+                                                                    onclick="copyJSON()">Copy</button>
+                                                                    <button
+                                                                    onclick="clearJSON">Clear</button>
+
+                                                                    <br><br>
+
+                                                                    <textarea id="jsonOutput"
+                                                                    placeholder="Formatted JSON..."
+                                                                    readonly></textarea>
+                                                                    </div>
+
+                                                                    <div class="tool-card">
+                                                                        <h2>✂ Image Crop</h2>
+
+                                                                        <input type="file"
+                                                                        id="cropImageInput" accept="image/*">
+                                                                        <br><br>
+
+                                                                        <button onclick="cropImage()">CropImage</button>
+                                                                        <br><br>
+
+                                                                        <canvas id="cropCanvas"></canvas>
+                                                                        </div>
+
+                                                                        <div class="tool-card">
+                                                                            <h2>📄 PDF Merger</h2>
+
+                                                                            <input type="file" id="pdfFiles" accept=".pdf" multiple>
+                                                                            <br><br>
+
+                                                                            <a id="downloadMergedPdf"
+                                                                            style="display:none;"
+                                                                            download="merged.pdf">
+                                                                             Download Merged PDF
+                                                                            </a>
+                                                                            </div>
+                                                                        
+                                                                            
+                                                                            <footer>
+                                                                                <p>&copy 2026 ToolNest.All Rights Reserved.</p>
+
+                                                                                <div class="footer-links">
+                                                                                    <a href="about.html">About</a> |
+                                                                           
+                                                                                   <a href="privacy.html">Privacy Policy</a> |
+
+                                                                                   <a href="terms.html">Terms</a> |
+
+                                                                                   <a href="contact.html">Contact</a>
+                                                                                   </div>
+                                                                                 </footer>
+                                                    
+                          </div>  
+                         <script
+                        src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script> 
+                        <script src="script.js"></script>
+
+                        
+                        </body>
+                        </html>
