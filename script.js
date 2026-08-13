@@ -414,7 +414,7 @@ setTimeout(loadVoices, 1500);
 setTimeout(loadVoices, 3000);
 
 speechSynthesis.onvoiceschanged =
-loadVoices
+loadVoices;
 loadVoices();
 
 function speakText() {
