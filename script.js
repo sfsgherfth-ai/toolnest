@@ -4,7 +4,7 @@ function $(id) {
 function show(id) {
     document.querySelectorAll(`.tool`).forEach(t => t.classList.remove('active'));
     const el = $(id);
-    if(el)el.classList.add('active');
+    if (el)el.classList.add('active');
     window.scrollTo({top: el.offsetTop - 80, behavior: 'smooth' });
 }
 
@@ -365,8 +365,17 @@ function loadVoices() {
     const languageSelect =
     document.getElementById("languageSelect");
 
+    if(!voiceSelect || !
+        languageSelect) return;
+
     voiceSelect.innerHTML = "";
     languageSelect.innerHTML = "";
+
+    if(voices.length === 0) {
+        voiceSelect.innerHTML =
+        '<option value="">Voiceloading...</option>';
+        return;
+    }
 
     const languages =[];
 
@@ -395,8 +404,17 @@ function loadVoices() {
     });
 }
 
+//desktop + mobile browser ke liye
+loadVoices();
+speechSynthesis.addEventListener("voiceschanged" ,loadVoices);
+
+//kuch mobile
+setTimeout(loadVoices, 500);
+setTimeout(loadVoices, 1500);
+setTimeout(loadVoices, 3000);
+
 speechSynthesis.onvoiceschanged =
-loadVoices;
+loadVoices
 loadVoices();
 
 function speakText() {
